@@ -1,0 +1,19 @@
+html {
+  font-size: 120%;
+}
+
+body {
+  background-color: var(--indigo-50);
+  padding: 4rem 1rem;
+  color: var(--text-color);
+}
+
+h2 {
+  font-size: 2.35rem;
+  color: var(--text-color);
+}
+
+p + *, * + p {
+  margin-block-start: 1rem;
+  color: var(--text-color);
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+	<head>
+	  <meta charset="UTF-8" />
+	  <title>글자, 배경 색상 조절</title>
+	  <style>
+	    .text {
+	      padding: 1rem;
+	      font-size: 1.5rem;
+	      text-align: center;
+	      color: #000000;
+	      background-color: #ffffff;
+	    }
+	
+	    .controls {
+	      margin-top: 2rem;
+	      display: flex;
+	      gap: 2rem;
+	      justify-content: center;
+	      align-items: center;
+	    }
+	
+	    label {
+	      font-size: 14px;
+	    }
+	
+	    input[type="color"] {
+	      width: 60px;
+	      height: 30px;
+	      border: none;
+	      padding: 0;
+	      cursor: pointer;
+	    }
+	  </style>
+    <script src="/assets/scripts/utils/css.js"></script>
+    <script src="/assets/scripts/utils/query.js"></script>
+	</head>
+	<body>
+	
+	  <p class="text">글자색과 배경색을 조절해 보세요!</p>
+	
+	  <div class="controls">
+	    <label for="textColor">
+	      글자색
+	      <input type="color" id="textColor" value="#000000" />
+	    </label>
+	
+	    <label for="backgroundColor">
+		    배경색
+	      <input type="color" id="backgroundColor" value="#ffffff" />
+	    </label>
+	  </div>
+		
+    <script>
+      {
+        // 글자 및 배경 색상 조절
+        // 레인지(range) 인풋 값이 변경되면 .text 요소의 글자 및 배경 색상이 변경되도록 구현합니다.
+        const textElement = query('.text')
+        const textColor = byId('textColor')
+        const backgroundColor = byId('backgroundColor')
+
+        textColor.addEventListener('input', () => {
+          // 텍스트 요소의 글자 색상 변경
+          css(textElement, 'color', textColor.value)
+        })
+        
+        backgroundColor.addEventListener('input', () => {
+          // 배경의 글자 색상 변경
+          css(textElement, 'background-color', backgroundColor.value)
+        })
+      }
+    </script>
+	</body>
+</html>

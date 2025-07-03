@@ -1,0 +1,20 @@
+.button {
+  border: 0;
+  padding: 0;
+}
+
+.dialog-open-button {
+  border-radius: 8px;
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px;
+}
+
+.dialog-close-button {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+}

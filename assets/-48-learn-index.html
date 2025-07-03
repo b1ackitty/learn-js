@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 펀더멘탈</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles/main.css" />
+    <link rel="icon" href="./assets/images/ecmascript-logo.ico" />
+    <script src="./assets/scripts/utils/css.js"></script>
+    <script src="./assets/scripts/utils/events.js"></script>
+    <script src="./assets/scripts/utils/query.js"></script>
+    <script src="./assets/scripts/utils/attr.js"></script>
+  </head>
+  <body>
+    <h1 lang="en-US" id="static">JavaScript</h1>
+
+    <ul hidden class="faq-list">
+      <li data-index="0"><a href="/faq/shipping">배송 관련 문의</a></li>
+      <li data-index="1"><a href="/faq/payment">결제 방법 안내</a></li>
+      <li data-index="2"><a href="/faq/return">반품 및 환불 정책</a></li>
+      <li data-index="3"><a href="/faq/account">계정 및 개인정보</a></li>
+      <li data-index="4"><a href="/faq/coupon">쿠폰 및 프로모션</a></li>
+    </ul>
+
+    <article hidden>
+      <div id="star-wars">
+        <div class="character" data-type="good-guy">
+          <span>루크</span> <span>스카이워커</span>
+        </div>
+        <div class="character" data-type="good-guy">
+          <b>요</b>
+          <i>다</i>
+        </div>
+        <div class="character" data-type="villain">
+          <em><span class="me">다스</span></em> <strong>베이더</strong>
+        </div>
+      </div>
+    </article>
+
+    <p hidden
+      id="notice"
+      class="announcement"
+      data-category="event"
+      data-user-id="27" 
+      data-role="manager" 
+      data-status="active"
+      >
+      모든 태그는 여러 개의 속성을 가질 수 있습니다!
+    </p>
+
+    <!-- 44 event target or current target -->
+    <button hidden type="button" data-name="change-bg-color">배경색 변경</button>
+
+    <!-- 45 event default action -->
+    <a hidden href="https://naver.com" target="_blank" rel="noopener noreferrer">
+      네이버
+    </a>
+    
+    <label hidden for="agreement">
+      <input type="checkbox" name="agreement" id="agreement" />
+      동의합니다.
+    </label>
+
+    <form hidden data-learn="form" method="GET" action="https://google.com">
+      <!-- 검색 필드 -->
+       <div>
+        <label for="searchTerm">검색어</label>
+        <input type="search" name="searchTerm" id="searchTerm" placeholder="검색어를 입력" />
+       </div>
+      <div style="margin-block-start: 8px;">
+        <button type="submit">검색</button>
+        <button type="reset">초기화</button>
+      </div>
+    </form>
+
+    <!-- 46 event propagation -->
+    <div hidden class="box box1">
+      <span>박스 1</span>
+      <div class="box box2">
+        <span>박스 2</span>
+        <div class="box box3">
+          <span>박스 3</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 47 event delegation -->
+    <ul hidden class="link-list">
+      <!-- <li><a href="/news">📢 최신 뉴스 보기</a></li> -->
+      <li><a href="/news">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="24" height="24" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+        >
+          <path d="M15 18h-5"/>
+          <path d="M18 14h-8"/>
+          <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"/>
+          <rect width="8" height="4" x="10" y="6" rx="1"/>
+        </svg>
+        <span>최신 뉴스 보기</span>
+      </a></li>
+      <li><a href="/tutorials">📘 튜토리얼 모음</a></li>
+      <li><a href="/community">💬 커뮤니티 참여</a></li>
+      <li><a href="/resources">📁 개발 자료실</a></li>
+      <li><a href="/contact">📮 문의하기</a></li>
+    </ul>
+
+    <!-- 48 Remove Event Listener -->
+    <div hidden role="group" style="display: flex; gap: 4px; margin-block: 12px;">
+      <button type="button" data-role="add-event">이벤트 추가</button>
+      <button type="button" data-role="remove-event">이벤트 제거</button>
+      <button type="button" data-role="tester">이벤트 추가 대기 중...</button>
+      <button type="button" data-role="once-event">1회만 이벤트 설정</button>
+    </div>
+
+    <script src="./assets/scripts/learn/49-web-animations.js"></script>
+  </body>
+</html>
