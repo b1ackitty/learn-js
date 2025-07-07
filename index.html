@@ -116,6 +116,99 @@
 
     </main>
 
+    <script>
+      {
+        
+        // 구조 분해 할당
+        // log, warn, error, assert - console 객체의 메서드
+        const { log, warn, error, assert } = console
+        
+        // 3항 연산자 식
+        ;(() => {
+          let condition = ' '
+          condition ? log('조건이 참') : warn('조건은 거짓')
+        })
+        
+        // 논리(곱 &&, 합 ||) 연산자 식
+        ;(() => {
+          let thisIs = [], thatIs = null
+          thatIs && assert(Array.isArray(thatIs), 'thatIs 변수 타입은 Array입니다.')
+          thisIs || error('thisIs는 유효하지 않습니다.')
+        })
+        
+        // 빠른 반환
+        ;(() => {
+          document.addEventListener('click', ({ target }) => {
+            if (!target.closest('h1')) return
+            log(target.textContent)
+          })
+        })
+        
+        // 템플릿 리터럴
+        ;(() => {
+          const articleTemplate = createArticleTemplate({ title: '유용한 JavaScript 기능' })
+          console.log(articleTemplate)
+    
+          function createArticleTemplate(data) {
+            return `
+              <article>
+                <h2>${data.title}</h2>
+              </article>
+            `
+          }  
+        })
+    
+        // 기본 매개변수
+        ;(() => {
+          const headings = $('h1')
+          log(headings)
+    
+          const [firstHeadline] = $('h1', 'main')
+          log(firstHeadline)
+    
+          function $(selector, context = document) {
+            if (typeof context === 'string') context = $(context)[0]
+            // DOCUMENT_NODE = 9 | ELEMENT_NODE = 1
+            if (context.nodeType !== 9 && context.nodeType !== 1) return
+            return context ? [...context.querySelectorAll(selector)] : []
+          }   
+        })
+    
+        // 향상된 객체 리터럴
+        ;(() => {
+          const con = {
+            log, warn, assert, error,
+            info(message) {
+              console.info(message)
+            }
+          }
+    
+          con.info('con 객체의 info 메서드')
+          con.warn('con 객체의 warn 메서드')
+          
+          // 나머지 & 전개 연산자
+          const arr1 = [1, 2]
+          const arr2 = [3, 4]
+          const arr3 = [...arr2, 9, ...arr2, 10]
+    
+          const myCon = { ...con, name: 'myCon' }
+          myCon.log(myCon)
+    
+          const total = sum(...arr3)
+          con.log(total)
+    
+          function sum(...args) {
+            let i = 0, result = 0
+            while(i < args.length) {
+              result += args[i]
+              i += 1
+            }
+            return result
+          }
+        })
+      }
+    </script>
+
   </body>
 
 </html>
