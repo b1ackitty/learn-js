@@ -162,4 +162,97 @@
   function getEmails(userList) {
     return userList.map(({ email }) => email)
   }
+})
+
+// 3. 상품 가격 할인 목록 반환 함수
+//   10% 할인율을 적용한 상품 할인 가격 목록(새 배열)을 반환하는 함수를 작성하세요.
+//   - 함수의 목적을 이해하기 쉽게 적절한 이름 작성
+//   - 함수가 단 하나의 기능만 가지도록 구성
+//   - JSDoc 주석 추가 (목적, 매개변수, 반환값)
+;(() => {
+  const products = [
+    { id: 1, name: '파운데이션', stock: 5, price: 32000 },
+    { id: 2, name: '블러셔', stock: 0, price: 17000 },
+    { id: 3, name: '아이섀도우', stock: 12, price: 22000 },
+    { id: 4, name: '립스틱', stock: 3, price: 15000 },
+    { id: 5, name: '브러시 세트', stock: 7, price: 28000 },
+    { id: 6, name: '아이라이너', stock: 4, price: 13000 },
+    { id: 7, name: '마스카라', stock: 2, price: 16000 },
+    { id: 8, name: '컨실러', stock: 6, price: 21000 },
+    { id: 9, name: '하이라이터', stock: 0, price: 18000 },
+    { id: 10, name: '쿠션 팩트', stock: 8, price: 35000 },
+  ]
+
+  console.log(calculate10DiscountPriceList(products))
+  console.log(products)
+
+  /**
+   * 상품의 10% 할인된 가격을 계산한 목록을 반환하는 기능
+   * 
+   * @param {{ id: number; name: string; stock: number; price: number }[]} product 상품 목록(price 필수 포함)
+   * @returns {number[]} 10% 할인율을 적용한 상품 할인 가격 목록(새 배열)
+   */
+  function calculate10DiscountPriceList(product) {
+    return product.map(({ price }) => price - (price * 0.1))
+  }
+})
+
+// 4. 재고있는 상품 목록 반환 함수
+//   재고가 있는 상품만 반환하는 함수를 작성하세요.
+//   - 함수의 목적을 이해하기 쉽게 적절한 이름 작성
+//   - 함수가 단 하나의 기능만 가지도록 구성
+//   - JSDoc 주석 추가 (목적, 매개변수, 반환값)
+;(() => {
+  const products = [
+    { id: 1, name: '파운데이션', stock: 5, price: 32000 },
+    { id: 2, name: '블러셔', stock: 0, price: 17000 },
+    { id: 3, name: '아이섀도우', stock: 12, price: 22000 },
+    { id: 4, name: '립스틱', stock: 3, price: 15000 },
+    { id: 5, name: '브러시 세트', stock: 0, price: 28000 },
+    { id: 6, name: '아이라이너', stock: 4, price: 13000 },
+    { id: 7, name: '마스카라', stock: 2, price: 16000 },
+    { id: 8, name: '컨실러', stock: 0, price: 21000 },
+    { id: 9, name: '하이라이터', stock: 0, price: 18000 },
+    { id: 10, name: '쿠션 팩트', stock: 1, price: 35000 },
+  ]
+
+  console.log(filterInStockProducts(products))
+
+  /**
+   * 재고가 있는 상품만 필터링하는 기능
+   * 
+   * @param {{ id: number; name: string; stock: number; price: number }} product 상품 목록(stock 필수 포함)
+   * @returns {{ id: number; name: string; stock: number; price: number }} 제고가 있는 상품 목록
+   */
+  function filterInStockProducts(product) {
+    return product.filter(({ stock }) => stock > 0)
+  }
+})
+
+// 5. 장바구니 상품 총 금액 계산 함수
+//   장바구니에 포함된 상품의 총 금액을 계산하는 함수를 작성하세요.
+//   - 함수의 목적을 이해하기 쉽게 적절한 이름 작성
+//   - 함수가 단 하나의 기능만 가지도록 구성
+//   - JSDoc 주석 추가 (목적, 매개변수, 반환값)
+;(() => {
+  const cart = [
+    { id: 2, name: '블러셔', quantity: 1, price: 17000 },
+    { id: 6, name: '아이라이너', quantity: 2, price: 13000 },
+    { id: 7, name: '마스카라', quantity: 1, price: 16000 },
+    { id: 10, name: '쿠션 팩트', quantity: 3, price: 35000 },
+  ]
+
+  console.log(getTotalPrice(cart))
+
+  /**
+   * 장바구니에 포함된 상품의 총 금액을 계산하는 기능
+   * 
+   * @param {{ id: number; name: string; quantity: number; price: number }} cart 장바구니에 포함된 상품 목록(price 필수 포함)
+   * @returns {Number} 장바구니 상품 총 금액
+   */
+  function getTotalPrice(cart) {
+    return cart
+              .map(({ price }) => price)
+              .reduce((total, price) => total += price)
+  }
 })()
