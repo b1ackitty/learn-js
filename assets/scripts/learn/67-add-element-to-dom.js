@@ -36,4 +36,15 @@
   // DOM에 추가(삽입)
   // 요소를 부모 요소의 마지막 자식으로 추가(append child)
   mountElement.appendChild(tableElement)
+})
+
+// 라면 레시피
+;(() => {
+  const ol = document.querySelector('.remen-cooking-recipe')
+
+  // <li> 요소를 생성한 다음 "맛있게 먹습니다!" 텍스트 콘텐츠 추가
+  const listItem = document.createElement('li')
+  listItem.textContent = '맛있게 먹습니다!'
+  // 생성된 <li> 요소를 ol 참조 요소 내무 마지막 자식으로 삽입
+  ol.appendChild(listItem)
 })()
