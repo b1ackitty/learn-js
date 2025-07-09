@@ -62,4 +62,23 @@
     // 좋아하지 않는 과일 목록의 마지막 항목으로 위치 이동
     dislikeFruitsList.appendChild(firstFruit)
   })
+})
+
+// 특정 요소 앞에 생성된 요소 삽입
+;(() => {
+  const ramenCookingRecipe = document.querySelector('.ramen-cooking-recipe')
+  // const targetRecipe = ramenCookingRecipe.children[2]
+  const [,,targetRecipe] = ramenCookingRecipe.children
+  // console.log(targetRecipe)
+  
+  // 동적으로 생성한 삽입 요소
+  // <li>면을 넣고 3~4분간 끓입니다.</li>
+  const insertRecipe = document.createElement('li')
+  insertRecipe.textContent = '면을 넣고 3~4분간 끓입니다.'
+  // console.log(insertRecipe)
+
+  // 동적 생성된 요소를 목표 요소 앞에 삽입
+  // targetRecipe.parentElement === ramenCookingRecipe
+  // targetRecipe.parentElement.insertBefore(삽입노드, 목표노드)
+  targetRecipe.parentElement.insertBefore(insertRecipe, targetRecipe)
 })()
