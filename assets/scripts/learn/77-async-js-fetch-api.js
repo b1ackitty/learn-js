@@ -120,4 +120,44 @@
   // 비동기 통신 이후, DOM 업데이트
   const reposList = document.querySelector('.repos-list')
   console.log(reposList) // [1]
+})
+
+// 실습
+// - Fetch API를 사용해 GitHub에 자신의 저장소 목록을 요청합니다.
+// - 응답받은 GitHub 저장소 목록을 화면에 DOM에 표시합니다.
+;(() => {
+  const promise = fetch('https://api.github.com/users/b1ackitty/repos')
+
+  promise
+    .then((response) => response.json())
+    .then((responseData) => {
+      const massagedData = responseData.map(({ git_url, description, owner: { avatar_url, login } }) => {
+        return {
+          url: git_url,
+          description,
+          avatar: avatar_url,
+          account: login,
+        }
+      },)
+
+      const listTemplate = massagedData.map(({ url, description, avatar, account }) => {
+        // const linkContent = url.replace('git://', '').replace('.git', '')
+        // 정규 표현식(Regular Expression, RegExp)
+        const linkContent = url.replace(/^git:\/\/|.git$/g, '')
+        const linkHref = `https://${linkContent}`
+        return `
+          <li>
+            <h3>${account}</h3>
+            <img src="${avatar}" alt="" height="80" width="80" />
+            <a href="${linkHref}">${linkContent}</a>
+            <p>${description}</p>
+          </li>
+        `
+      }).join('')
+
+      reposList.innerHTML = DOMPurify.sanitize(listTemplate)
+    })
+  
+  const reposList = document.querySelector('.repos-list')
+  console.log(reposList)
 })()
