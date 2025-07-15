@@ -17,6 +17,63 @@
     
     <h1 lang="en">JavaScript</h1>
 
+    <form action="http://localhose:4000/submit" method="post">
+      <div>
+        <label for="name">이름</label>
+        <input type="text" name="name" id="name" value="yamoo9" />
+      </div>
+      <div>
+        <label for="email">이메일</label>
+        <input type="email" name="email" id="email" value="yamoo9@naver.com" />
+      </div>
+      <div>
+        <label for="password">패스워드</label>
+        <input type="password" name="password" id="password" value="qwerty" />
+      </div>
+      <button type="submit">보내기</button>
+    </form>
+
+    <script>
+      {
+        const form = document.querySelector('form')
+
+        // CORS: 다른 출처(사이트)에서 서버의 리소스 공유하는 것을 막는다.
+        // CORS 우회(클라이언트 앱 <- 프록시 서버 요청 -> API 서버)
+        // CORS 허용(클라이언트 앱 -> API 서버)
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault()
+
+          const form = e.currentTarget
+          const url = form.action
+          const method = form.method
+
+          const [ nameInput, emailInput, passwordInput ] = form.elements
+
+          const name = nameInput.value.trim()
+          const email = emailInput.value.trim()
+          const password = passwordInput.value.trim()
+
+          const requestBody = new URLSearchParams({
+            name, email, password
+          }).toString()
+
+          // fetch()
+          fetch(url, {
+            method,
+            headers: {
+              'content-type': 'applications/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(requestBody)
+          })
+            .then((response) => response.json())
+            .then(console.log)
+
+          // XMLHttpRequest
+        })
+      }
+    </script>
+
     <main hidden>
   
       <div class="demo">
@@ -74,16 +131,16 @@
       <form class="form">
         <p>어떤 과일을 좋아하세요?</p>
         <div class="checkbox">
-          <input type="checkbox" name="apple" id="apple" value="사과" checked />
-          <label for="apple">🍎 사과</label>
+          <input type="checkbox" name="apple" id="apple-check" value="사과" checked />
+          <label for="apple-check">🍎 사과</label>
         </div>
         <div class="checkbox">
-          <input type="checkbox" name="grape" id="grape" />
-          <label for="grape">🍇 포도</label>
+          <input type="checkbox" name="grape" id="grape-check" />
+          <label for="grape-check">🍇 포도</label>
         </div>
         <div class="checkbox">
-          <input type="checkbox" name="lemon" id="lemon" checked />
-          <label for="lemon">🍋 레몬</label>
+          <input type="checkbox" name="lemon" id="lemoncheck" checked />
+          <label for="lemoncheck">🍋 레몬</label>
         </div>
       </form>
 
@@ -120,11 +177,11 @@
 
       <form action="/subscribe" method="POST">
         <div>
-          <label for="email">이메일</label>
+          <label for="email1">이메일</label>
           <input
             type="email"
             name="email"
-            id="email"
+            id="email1"
             placeholder="user@example.com"
           />
         </div>
@@ -214,8 +271,8 @@
       <div class="practice1" style="display: flex; flex-direction: column; gap: 20px;">
         <form>
           <div>
-            <label for="username">이름</label>
-            <input id="username" name="username" placeholder="이름을 입력하세요" />
+            <label for="username1">이름</label>
+            <input id="username1" name="username" placeholder="이름을 입력하세요" />
           </div>
           <button type="submit">확인</button>
         </form>
